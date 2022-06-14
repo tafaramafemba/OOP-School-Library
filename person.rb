@@ -1,14 +1,14 @@
 require './nameable'
 
-class Person
+class Person < Nameable
   attr_reader :id
   attr_accessor :name, :age
 
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = id
     @name = name
     @age = age
-    @nameable = Nameable.new
     @parent_permission = parent_permission
   end
 
@@ -16,8 +16,8 @@ class Person
     @parent_permission && of_age?
   end
 
-  def correct_name_valid
-    @nameable.correct_name(@name)
+  def correct_name
+    name
   end
 
   private
