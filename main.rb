@@ -1,27 +1,19 @@
 require './helpers'
-require './add_user'
-require './list_book'
-require './list_people'
-require './list_rental'
-require './add_book'
-require './add_rental'
+require './app'
 
-class App
-  include ListBook
-  include ListPeople
-  include ListRental
-  include AddUser
-  include CreateBook
-  include CreateRental
+class Main
   include Helpers
+  def initialize
+    @app = App.new
+  end
 
   def first_display
     puts 'Welcome to School Library App!'
-    options
     prompt_user
   end
 
   def prompt_user
+    options
     input = gets.chomp
 
     if input.to_i.between?(1, 6)
@@ -49,20 +41,20 @@ class App
   def selection(input)
     case input
     when '1'
-      add_user
+      @app.add_user
     when '2'
-      add_book
+      @app.add_book
     when '3'
-      add_rental
+      @app.add_rental
     when '4'
-      list_all_books
+      @app.list_all_books
     when '5'
-      list_all_people
+      @app.list_all_people
     when '6'
-      list_all_rental_by_id
+      @app.list_all_rental_by_id
     end
   end
 end
 
-app = App.new
-app.first_display
+main = Main.new
+main.first_display

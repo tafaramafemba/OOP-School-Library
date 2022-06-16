@@ -3,7 +3,6 @@ module Helpers
     sleep 1
     puts "\n#{name} created successfully!!!"
     sleep 1
-    continue?
   end
 
   def continue?
@@ -12,7 +11,6 @@ module Helpers
 
     if answer.downcase == 'y' || answer.downcase == 'yes' || answer == ''
       clear
-      prompt_user
     else
       exit
     end
