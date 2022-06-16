@@ -24,7 +24,7 @@ module CreateRental
       continue?
     else
       print "\nDate: "
-      date = gets.chomp
+      gets.chomp
 
       response('Rental')
     end

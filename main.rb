@@ -5,7 +5,6 @@ require './list_people'
 require './list_rental'
 require './add_book'
 require './add_rental'
-require './helpers'
 
 class App
   include ListBook

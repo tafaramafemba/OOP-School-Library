@@ -26,28 +26,28 @@ module AddUser
 
   def add_student
     print 'Age: '
-    age = gets.chomp
+    gets.chomp
 
     print 'Name: '
-    name = gets.chomp
+    gets.chomp
 
     print 'Has parent permission? [Y/N]: '
-    permission = gets.chomp
+    gets.chomp
 
-    parent_permission = permission.downcase == 'y' || permission.downcase == 'yes' || permission == ''
+    permission.downcase == 'y' || permission.downcase == 'yes' || permission == ''
 
     response('Student')
   end
 
   def add_teacher
     print 'Age: '
-    age = gets.chomp
+    gets.chomp
 
     print 'Name: '
-    name = gets.chomp
+    gets.chomp
 
     print 'Specialization: '
-    specialization = gets.chomp
+    gets.chomp
 
     response('Teacher')
   end
