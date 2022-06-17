@@ -3,7 +3,6 @@ module Helpers
     sleep 1
     puts "\n#{name} created successfully!!!"
     sleep 1
-    
   end
 
   def continue?
@@ -21,7 +20,7 @@ module Helpers
   def invalid_prompt
     clear
     puts 'Incorrect selection, please try again!'
-    
+
     sleep 1
   end
 
@@ -33,5 +32,4 @@ module Helpers
     clear
     nil
   end
-
 end

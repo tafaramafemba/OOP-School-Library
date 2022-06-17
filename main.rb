@@ -4,7 +4,7 @@ require './book'
 require './person'
 require './rental'
 
-class Main
+class Main # rubocop:disable Metrics/ClassLength
   def initialize
     @booklist = []
     @list_people = []
@@ -59,6 +59,7 @@ class Main
       list_all_rental_by_id
     end
   end
+
   def add_book
     print 'Title: '
     title = gets.chomp
@@ -205,7 +206,7 @@ class Main
   def invalid_prompt
     clear
     puts 'Incorrect selection, please try again!'
-    
+
     sleep 1
   end
 
