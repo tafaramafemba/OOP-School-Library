@@ -3,8 +3,10 @@ require './teacher'
 require './book'
 require './person'
 require './rental'
+require './helpers'
 
-class UI # rubocop:disable Metrics/ClassLength
+class Menu # rubocop:disable Metrics/ClassLength
+  include Helpers
   def initialize
     @booklist = []
     @list_people = []
@@ -180,42 +182,5 @@ class UI # rubocop:disable Metrics/ClassLength
 
     puts "\n"
     prompt_user
-  end
-
-  # helpers
-  def response(name)
-    sleep 1
-    puts "\n#{name} created successfully!!!"
-    sleep 1
-    clear
-    prompt_user
-  end
-
-  def continue?
-    print "\nDo you wish to continue? [Y/N]: "
-    answer = gets.chomp
-
-    if answer.downcase == 'y' || answer.downcase == 'yes' || answer == ''
-      clear
-      prompt_user
-    else
-      exit
-    end
-  end
-
-  def invalid_prompt
-    clear
-    puts 'Incorrect selection, please try again!'
-
-    sleep 1
-  end
-
-  def clear
-    print "\e[2J\e[f"
-  end
-
-  def exit
-    clear
-    nil
   end
 end

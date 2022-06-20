@@ -1,5 +1,5 @@
-require './ui'
+require './menu'
 
 class Main
-  UI.new.first_display
+  Menu.new.first_display
 end

@@ -1,8 +1,11 @@
+require './menu'
+
 module Helpers
   def response(name)
     sleep 1
     puts "\n#{name} created successfully!!!"
     sleep 1
+    continue?
   end
 
   def continue?
