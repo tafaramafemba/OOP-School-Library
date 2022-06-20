@@ -6,7 +6,7 @@ module List
     puts "\n"
     prompt_user
   end
-  
+
   def list_all_rental_by_id
     print 'ID of person: '
     user_id = gets.chomp.to_i

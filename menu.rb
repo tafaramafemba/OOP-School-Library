@@ -3,7 +3,7 @@ require './createuser'
 require './list'
 require './add'
 
-class Menu # rubocop:disable Metrics/ClassLength
+class Menu
   include Helpers
   include CreateUser
   include List
