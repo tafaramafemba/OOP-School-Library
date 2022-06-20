@@ -20,6 +20,11 @@ To get a local copy of the project, follow these steps:
 - GitHub: [@tafaramafemba](https://github.com/tafaramafemba)
 - LinkedIn: [Tafara Mafemba](https://www.linkedin.com/in/tafara-mafemba)
 
+👤 **Rao Akif**
+
+- GitHub: [@raoakif](https://github.com/raoakif)
+- LinkedIn: [Rao Akif](https://www.linkedin.com/in/raoakif)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
