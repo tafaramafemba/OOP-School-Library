@@ -8,8 +8,7 @@ module Add
 
     print 'Author: '
     author = gets.chomp
-    book = Book.new(title, author)
-    @booklist.push(book)
+    update_books(Book.new(title, author))
     response('Book ')
   end
 
@@ -26,9 +25,8 @@ module Add
     person_index = gets.chomp.to_i
     puts 'Enter the Date of rental (YYYY-MM-DD):'
     date = gets.chomp
-    rental = Rental.new(date, @booklist[book_index], @list_people[person_index])
-    @rentals.push(rental)
-
+    Rental.new(date, @booklist[book_index], @list_people[person_index])
+    
     puts 'Rental created!'
     prompt_user
   end

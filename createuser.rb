@@ -39,9 +39,7 @@ module CreateUser
 
     parent_permission = permission.downcase == 'y' || permission.downcase == 'yes' || permission == ''
 
-    student = Student.new(age, name, classroom, parent_permission: parent_permission)
-
-    @list_people.push(student)
+    update_student(Student.new(age, name, classroom, parent_permission: parent_permission))
 
     response('Student')
   end
@@ -56,8 +54,8 @@ module CreateUser
     print 'Specialization: '
     specialization = gets.chomp
 
-    teacher = Teacher.new(age, name, specialization, parent_permission: true)
-    @list_people.push(teacher)
+    update_teacher(Teacher.new(age, name, specialization, parent_permission: true))
+    
     response('Teacher')
   end
 
