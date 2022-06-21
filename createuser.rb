@@ -39,7 +39,7 @@ module CreateUser
 
     parent_permission = permission.downcase == 'y' || permission.downcase == 'yes' || permission == ''
 
-    update_student(Student.new(age, name, classroom, parent_permission: parent_permission))
+    update_user(Student.new(age, name, classroom, parent_permission: parent_permission))
 
     response('Student')
   end
@@ -54,13 +54,13 @@ module CreateUser
     print 'Specialization: '
     specialization = gets.chomp
 
-    update_teacher(Teacher.new(age, name, specialization, parent_permission: true))
-    
+    update_user(Teacher.new(age, name, specialization, parent_permission: true))
+
     response('Teacher')
   end
 
   def list_all_people
-    @list_people.each do |user|
+    user.each do |user|
       puts "[#{user.class}] Name: #{user.name} | ID: #{user.id} | Age: #{user.age}"
     end
     puts "\n"

@@ -21,31 +21,23 @@ module PreserveData
     File.exist? filename
   end
 
-  def fetch_teacher
+  def fetch_user
     path = 'data/users.json'
 
     if file_exist?(path)
       fetch_data(path).map do |users|
-        Teacher.new(users['id'], users['age'], users['name'], users['specialization'])
+        if users['instance'] == 'Teacher'
+          Teacher.new(users['id'], users['age'], users['name'], users['specialization'])
+        else
+          parent_permission = users['permission'] && true
+          Student.new(users['id'], users['age'], users['name'], users['classroom'])
+        end
       end
     else
       create_file(path)
       []
     end
   end
-
-  def fetch_student
-    path = 'data/users.json'
-
-    if file_exist?(path)
-      fetch_data(path).map do |users|
-        Student.new(users['id'], users['age'], users['name'], users['classroom'])
-      end
-    else
-      create_file(path)
-      []
-    end
-  end  
 
   def fetch_books
     path = 'data/books.json'
@@ -66,7 +58,7 @@ module PreserveData
     if file_exist?(path)
       fetch_data(path).map do |rental|
         date = rental['date']
-        select_user = users.select { |user| user.id == rental['id'] }
+        select_user = user.select { |user| user.id == rental['id'] }
         select_book = books.select { |book| book.title == rental['title'] }
 
         Rental.new(select_user[0], select_book[0], date)
@@ -77,17 +69,15 @@ module PreserveData
     end
   end
 
-  def save_student(user)
+  def save_user(user)
     path = 'data/users.json'
     data = fetch_data(path)
-      data.push({ id: user.id, age: user.age, name: user.name, classroom: user.classroom })
-    save(path, data)
-  end
 
-  def save_teacher(user)
-    path = 'data/users.json'
-    data = fetch_data(path)
-      data.push({ id: user.id, age: user.age, name: user.name})
+    if user.instance_of?(Teacher)
+      data.push({ instance: 'Teacher', id: user.id, age: user.age, name: user.name })
+    else
+      data.push({ instance: 'Student', id: user.id, age: user.age, name: user.name, classroom: user.classroom })
+    end
 
     save(path, data)
   end
@@ -96,7 +86,7 @@ module PreserveData
     path = 'data/books.json'
     data = fetch_data(path)
 
-    data.push({ title: book.title, author: book.author })
+    data.push({ title: book.author, author: book.title })
     save(path, data)
   end
 
