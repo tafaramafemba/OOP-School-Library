@@ -10,7 +10,7 @@ module PreserveData
   end
 
   def fetch_data(path)
-    JSON.parse(File.read(path), create_additions: true)
+    JSON.parse(File.read(path), create_additions: false)
   end
 
   def save(path, data)
@@ -27,10 +27,10 @@ module PreserveData
     if file_exist?(path)
       fetch_data(path).map do |users|
         if users['instance'] == 'Teacher'
-          Teacher.new(users['id'], users['age'], users['name'], users['specialization'])
+         Teacher.new(users['id'], users['age'], users['name'], users['specialization'], parent_permission: true)
         else
 
-          Student.new(users['id'], users['age'], users['name'], users['classroom'])
+        Student.new(users['id'], users['age'], users['name'], users['classroom'], users['parent_permission'])
         end
       end
     else
@@ -61,7 +61,7 @@ module PreserveData
         select_user = user.select { |user| user.id == rental['id'] }
         select_book = books.select { |book| book.title == rental['title'] }
 
-        Rental.new(select_user[0], select_book[0], date)
+        Rental.new(date, select_book[0], select_user[0])
       end
     else
       create_file(path)
@@ -86,7 +86,7 @@ module PreserveData
     path = 'data/books.json'
     data = fetch_data(path)
 
-    data.push({ title: book.author, author: book.title })
+    data.push({ title: book.title, author: book.author })
     save(path, data)
   end
 

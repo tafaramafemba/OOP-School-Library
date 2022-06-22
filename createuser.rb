@@ -38,8 +38,9 @@ module CreateUser
     permission = gets.chomp
 
     parent_permission = permission.downcase == 'y' || permission.downcase == 'yes' || permission == ''
+    id = Random.rand(1000..2000)
 
-    update_user(Student.new(age, name, classroom, parent_permission: parent_permission))
+    update_user(Student.new(id, age, name, classroom, parent_permission: parent_permission))
 
     response('Student')
   end
@@ -54,7 +55,9 @@ module CreateUser
     print 'Specialization: '
     specialization = gets.chomp
 
-    update_user(Teacher.new(age, name, specialization, parent_permission: true))
+    id = Random.rand(1000..2000)
+
+    update_user(Teacher.new(id, age, name, specialization, parent_permission: true))
 
     response('Teacher')
   end

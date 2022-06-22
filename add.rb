@@ -19,8 +19,8 @@ module Add
     end
     book_index = gets.chomp.to_i
     puts 'select a person from the following list by number (not ID):'
-    user.each_with_index do |person, index|
-      puts "[#{index}] [#{person.class}] Name: #{person.name} ID: #{person.id} Age: #{person.age}"
+    user.each_with_index do |user, index|
+      puts "[#{index}] [#{user.class}] Name: #{user.name} ID: #{user.id} Age: #{user.age}"
     end
     person_index = gets.chomp.to_i
     puts 'Enter the Date of rental (YYYY-MM-DD):'
