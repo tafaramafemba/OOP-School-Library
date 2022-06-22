@@ -2,17 +2,21 @@ require './helpers'
 require './createuser'
 require './list'
 require './add'
+require './preservedata'
 
 class Menu
   include Helpers
   include CreateUser
   include List
   include Add
+  include PreserveData
+
+  attr_reader :user, :books, :rentals
 
   def initialize
-    @booklist = []
-    @list_people = []
-    @rentals = []
+    @user = fetch_user
+    @books = fetch_books
+    @rentals = fetch_rentals
   end
 
   def first_display
@@ -62,5 +66,20 @@ class Menu
     when '6'
       list_all_rental_by_id
     end
+  end
+
+  def update_user(user)
+    @user << user
+    save_user(user)
+  end
+
+  def update_books(book)
+    @books << book
+    save_book(book)
+  end
+
+  def update_rentals(rental)
+    @rentals << rental
+    save_rental(rental)
   end
 end

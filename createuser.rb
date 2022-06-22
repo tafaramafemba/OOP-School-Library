@@ -38,10 +38,9 @@ module CreateUser
     permission = gets.chomp
 
     parent_permission = permission.downcase == 'y' || permission.downcase == 'yes' || permission == ''
+    id = Random.rand(1000..2000)
 
-    student = Student.new(age, name, classroom, parent_permission: parent_permission)
-
-    @list_people.push(student)
+    update_user(Student.new(id, age, name, classroom, parent_permission: parent_permission))
 
     response('Student')
   end
@@ -56,13 +55,15 @@ module CreateUser
     print 'Specialization: '
     specialization = gets.chomp
 
-    teacher = Teacher.new(age, name, specialization, parent_permission: true)
-    @list_people.push(teacher)
+    id = Random.rand(1000..2000)
+
+    update_user(Teacher.new(id, age, name, specialization, parent_permission: true))
+
     response('Teacher')
   end
 
   def list_all_people
-    @list_people.each do |user|
+    user.each do |user|
       puts "[#{user.class}] Name: #{user.name} | ID: #{user.id} | Age: #{user.age}"
     end
     puts "\n"
