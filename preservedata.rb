@@ -29,7 +29,7 @@ module PreserveData
         if users['instance'] == 'Teacher'
           Teacher.new(users['id'], users['age'], users['name'], users['specialization'])
         else
-          parent_permission = users['permission'] && true
+
           Student.new(users['id'], users['age'], users['name'], users['classroom'])
         end
       end
