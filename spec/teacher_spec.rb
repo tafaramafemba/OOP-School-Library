@@ -3,7 +3,7 @@ describe Teacher do
   context 'It should create a teacher' do
     id = 7
     age = 56
-    name  = 'Tafara'
+    name = 'Tafara'
     specialization = 'Mathematics'
     teacher = Teacher.new(id, age, name, specialization, parent_permission: true)
 
@@ -12,4 +12,3 @@ describe Teacher do
     end
   end
 end
-

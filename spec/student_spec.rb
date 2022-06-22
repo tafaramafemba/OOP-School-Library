@@ -4,7 +4,7 @@ describe Student do
   context 'It should create a student' do
     id = 2
     age = 24
-    name  = 'Tinotenda'
+    name = 'Tinotenda'
     classroom = '8 yellow'
     parent_permission = true
     student = Student.new(id, age, name, classroom, parent_permission)
@@ -22,4 +22,3 @@ describe Student do
     end
   end
 end
-
