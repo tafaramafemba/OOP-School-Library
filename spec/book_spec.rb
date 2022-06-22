@@ -11,8 +11,8 @@ describe Book do
     end
 
     it 'should check title and author of book' do
-      expect(book.title).to eq(title)
-      expect(book.author).to eq(author)
+      expect(book.author).to eq(title)
+      expect(book.title).to eq(author)
     end
   end
 end
