@@ -14,6 +14,5 @@ describe Book do
       expect(book.title).to eq(title)
       expect(book.author).to eq(author)
     end
-
   end
 end
